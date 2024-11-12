@@ -4,6 +4,8 @@ import 'basic_level_1.dart';
 import 'basic_level_2.dart';
 import 'medium_level_1.dart';
 import 'medium_level_2.dart';
+import 'avanced_level_1.dart';
+import 'avanced_level_2.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
   final Configuracoes configuracoes;
@@ -85,12 +87,25 @@ class LevelSelectionScreen extends StatelessWidget {
                     builder: (context) => MediumLevel1(),
                   ),
                 );
-              }
-              else if(nivel == 'Médio 2'){
+              }else if(nivel == 'Médio 2'){
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MediumLevel2(),
+                  ),
+                );
+              }else if(nivel == 'Avançado 1'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AdvancedLevel1(),
+                  ),
+                );
+              }else if(nivel == 'Avançado 2'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AdvancedLevel2(),
                   ),
                 );
               }
