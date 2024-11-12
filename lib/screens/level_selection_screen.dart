@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/config.dart';
 import 'basic_level_1.dart';
 import 'basic_level_2.dart';
+import 'medium_level_1.dart';
+import 'medium_level_2.dart';
 
 class LevelSelectionScreen extends StatelessWidget {
   final Configuracoes configuracoes;
@@ -76,8 +78,22 @@ class LevelSelectionScreen extends StatelessWidget {
                     builder: (context) => BasicLevel2(),
                   ),
                 );
+              }else if(nivel == 'Médio 1'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MediumLevel1(),
+                  ),
+                );
               }
-              // Adicione navegação para outros níveis conforme necessário
+              else if(nivel == 'Médio 2'){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MediumLevel2(),
+                  ),
+                );
+              }
             }
           : null,
       child: Text(

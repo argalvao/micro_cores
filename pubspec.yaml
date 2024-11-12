@@ -33,6 +33,7 @@ dependencies:
   animated_background: ^2.0.0
   flutter_svg: ^1.0.3
   flutter_tts: ^3.4.0
+  font_awesome_flutter: ^10.1.0
 
 
 
