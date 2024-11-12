@@ -68,6 +68,7 @@ class _BasicLevel2State extends State<BasicLevel2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 187, 179, 179),
       appBar: AppBar(
         title: Text("Nível Básico 2"),
         backgroundColor: Colors.lightBlue,

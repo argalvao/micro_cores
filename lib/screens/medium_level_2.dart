@@ -67,6 +67,7 @@ class _MediumLevel2State extends State<MediumLevel2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 187, 179, 179),
       appBar: AppBar(
         title: Text("Nível Médio 2"),
         backgroundColor: Colors.lightBlue,

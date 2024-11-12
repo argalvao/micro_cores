@@ -81,6 +81,7 @@ class _AdvancedLevel2State extends State<AdvancedLevel2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 187, 179, 179),
       appBar: AppBar(
         title: Text("Nível Avançado 2"),
         backgroundColor: Colors.lightBlue,
