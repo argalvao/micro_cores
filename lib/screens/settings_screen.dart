@@ -1,26 +1,8 @@
-import 'dart:ui';
 import 'dart:math';
-import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_background/animated_background.dart';
 import '../models/config.dart';
-
-class ColorParticle extends Particle {
-  final double size;
-  Color color;
-
-  ColorParticle(this.color)
-      : size = 10.0,
-        super();
-
-  @override
-  void render(Canvas canvas) {
-    final paint = Paint()..color = color;
-    canvas.drawCircle(Offset(0, 0), size / 2, paint);
-  }
-
-  @override
-  void update(double time) {}
-}
+import '../models/config_repository.dart';
 
 class SettingsScreen extends StatefulWidget {
   final Configuracoes configuracoes;
@@ -44,19 +26,22 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
     super.initState();
     _corPreferida = widget.configuracoes.corPreferida;
     _musicaCalma = widget.configuracoes.musicaCalma;
-    _capacidadeMotora = ''; // Inicializa como string vazia
+    _capacidadeMotora = widget.configuracoes.capacidadeMotora;
     _fala = widget.configuracoes.fala;
     _estilosMusicais = List.from(widget.configuracoes.estilosMusicais);
     _objetosPreferidos = List.from(widget.configuracoes.objetosPreferidos);
   }
 
-  void _salvarConfiguracoes() {
+  void _salvarConfiguracoes() async {
     widget.configuracoes.corPreferida = _corPreferida;
     widget.configuracoes.musicaCalma = _musicaCalma;
     widget.configuracoes.capacidadeMotora = _capacidadeMotora;
     widget.configuracoes.fala = _fala;
     widget.configuracoes.estilosMusicais = List.from(_estilosMusicais);
     widget.configuracoes.objetosPreferidos = List.from(_objetosPreferidos);
+
+    final configuracoesRepository = ConfiguracoesRepository();
+    await configuracoesRepository.saveConfiguracoes(widget.configuracoes);
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("Configurações salvas com sucesso!")),
@@ -145,6 +130,19 @@ class _SettingsScreenState extends State<SettingsScreen> with SingleTickerProvid
                     child: Text(value),
                   );
                 }).toList(),
+              ),
+              SizedBox(height: 20),
+
+              // Música Calma
+              Text("Música calma:", style: TextStyle(fontSize: 18)),
+              SwitchListTile(
+                title: Text("Ativar música calma"),
+                value: _musicaCalma,
+                onChanged: (bool value) {
+                  setState(() {
+                    _musicaCalma = value;
+                  });
+                },
               ),
               SizedBox(height: 20),
 

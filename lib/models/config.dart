@@ -15,9 +15,30 @@ class Configuracoes {
     this.objetosPreferidos = const ['Cachorro'],
   });
 
-  // Função para verificar se as configurações essenciais estão completas
+  Map<String, dynamic> toMap() {
+    return {
+      'corPreferida': corPreferida,
+      'musicaCalma': musicaCalma,
+      'capacidadeMotora': capacidadeMotora,
+      'fala': fala,
+      'estilosMusicais': estilosMusicais,
+      'objetosPreferidos': objetosPreferidos,
+    };
+  }
+
+  factory Configuracoes.fromMap(Map<String, dynamic> map) {
+    return Configuracoes(
+      corPreferida: map['corPreferida'] ?? 'Azul',
+      musicaCalma: map['musicaCalma'] ?? true,
+      capacidadeMotora: map['capacidadeMotora'] ?? 'Boa',
+      fala: map['fala'] ?? true,
+      estilosMusicais: List<String>.from(map['estilosMusicais'] ?? ['Infantil']),
+      objetosPreferidos: List<String>.from(map['objetosPreferidos'] ?? ['Cachorro']),
+    );
+  }
+
+  // Método para verificar se as configurações essenciais estão completas
   bool isComplete() {
-    // Verifica se a capacidade motora foi definida e se há pelo menos um objeto preferido selecionado
     return capacidadeMotora.isNotEmpty && objetosPreferidos.isNotEmpty;
   }
 }

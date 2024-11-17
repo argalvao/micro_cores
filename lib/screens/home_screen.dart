@@ -1,7 +1,6 @@
-// home_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart'; // Import do Google Fonts
 import '../models/pixel_art_painter.dart';
 import 'settings_screen.dart';
 import 'level_selection_screen.dart'; // Import da tela de seleção de nível
@@ -19,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   double cloudOffsetX = 0.0;
   double rainOffsetX = 0.0;
-  bool isConfigComplete = false; // Variável para monitorar a completude das configurações
+  bool isConfigComplete = false;
 
   late AnimationController _controller;
 
@@ -47,7 +46,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     });
   }
 
-  // Abre a tela de seleção de nível
   void _openLevelSelection() {
     Navigator.push(
       context,
@@ -76,14 +74,23 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // Título e Subtítulo
                   Text(
-                    'MicroCores - Sons e Movimentos',
+                    'MicroCores',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 32,
+                    style: GoogleFonts.fredokaOne(
+                      fontSize: 65, // Tamanho maior para o título
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      fontFamily: 'Comic Sans MS',
+                    ),
+                  ),
+                  Text(
+                    'Sons e Movimentos',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.fredokaOne(
+                      fontSize: 32, // Tamanho menor para o subtítulo
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black,
                     ),
                   ),
                   SizedBox(height: 30),
