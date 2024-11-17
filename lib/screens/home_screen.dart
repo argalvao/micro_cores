@@ -104,7 +104,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                       ),
                     ).then((_) => _checkConfigCompletion()); // Verifica novamente após a configuração
                   }),
-                  _buildButton(context, 'AJUDA', Icons.help, () {}),
                 ],
               ),
             ),
